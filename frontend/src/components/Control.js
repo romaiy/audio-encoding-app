@@ -1,11 +1,12 @@
 import { useReactMediaRecorder } from "react-media-recorder";
 import React, { useEffect, useState } from "react";
 
-const RecordView = (props) => {
+const RecordView = () => {
     const [second, setSecond] = useState("00");
     const [minute, setMinute] = useState("00");
     const [isActive, setIsActive] = useState(false);
     const [counter, setCounter] = useState(0);
+    const [visible, setVisible] = useState(false);
     
     useEffect(() => {
         let intervalId;
@@ -41,6 +42,16 @@ const RecordView = (props) => {
         setMinute("00");
     }
 
+    const startVisible = () => {
+        if (!visible) {
+            setIsActive(false);
+            setCounter(0);
+            setSecond("00");
+            setMinute("00");
+        }
+        setVisible(!visible);
+    }
+
     const { status, startRecording, stopRecording, pauseRecording, mediaBlobUrl
     } = useReactMediaRecorder({
     video: false,
@@ -52,59 +63,67 @@ const RecordView = (props) => {
 
     return (
         <div className="control">
-            <div className="control__content container">
+            <div className="control__content">
                 <h1 className="control__heading">{status}</h1>
-                <div>
-                <video src={mediaBlobUrl} controls loop />
-                </div>
+                <div className="control__block">
 
-                <div>
-                <button
-                    onClick={stopTimer}
-                >
-                    Clear
-                </button>
-                <div>
+                    <div className="control__video" style={(visible) ? {display: 'flex'} : {display: 'none'}}>
+                    <video src={mediaBlobUrl} controls />
+                    </div>
+
+                    <button onClick={stopTimer}>
+                        Clear
+                    </button>
+
+                    <div className="control__time">
                     <span className="minute">{minute}</span>
                     <span>:</span>
                     <span className="second">{second}</span>
-                </div>
-
-                <div>
-                    <label
-                    htmlFor="icon-button-file"
-                    >
-                    <h3>
-                        Press the Start to record
-                    </h3>
+                    </div>
 
                     <div>
-                        <button
-                        onClick={() => {
-                        if (!isActive) {
-                            startRecording();
-                        } else {
-                            pauseRecording();
-                        }
+                        <h3 className="control__help">
+                            Press the Start to record
+                        </h3>
 
-                        setIsActive(!isActive);
-                        }}
-                    >
-                        {isActive ? "Pause" : "Start"}
-                        </button>
-                        <button
-                        onClick={() => {
-                            stopRecording();
-                            pauseRecording();
-                        }}
+                        <label
+                        htmlFor="icon-button-file"
                         >
-                        Stop
-                        </button>
+
+                        <div className="control__panel">
+
+                            <button
+                            className="button"
+                            onClick={() => {
+                            if (!isActive) {
+                                startRecording();
+                            } else {
+                                pauseRecording();
+                            }
+
+                            setIsActive(!isActive);
+                            }}
+                            >
+                            {isActive ? "Pause" : "Start"}
+                            </button>
+                            
+                            <button
+                            className="button"
+                            onClick={() => {
+                                stopRecording();
+                                pauseRecording();
+                                startVisible();
+                            }}
+                            >
+                            Stop
+                            </button>
+
+                        </div>
+
+                        </label>
                     </div>
-                    </label>
+
                 </div>
-                <b></b>
-            </div>
             </div>
         </div>
 );

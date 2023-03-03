@@ -107,7 +107,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  background: #FFFFFF;
+  background: #F6F6F6;
 }
 
 * {
@@ -134,35 +134,42 @@ body {
   width: 0;
 }
 
-.control__content {
+.control {
   padding-top: 100px;
 }
-.control__row {
-  display: flex;
-  justify-content: center;
+.control__content {
+  background: white;
+  width: 911px;
+  height: 496px;
+  border-radius: 10px;
+  padding: 30px;
+}
+.control__heading {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+.control__help {
+  font-size: 16px;
+  line-height: 19px;
+  color: #101010;
+  margin-bottom: 25px;
 }
 
 .button {
   margin-right: 20px;
-  height: 100px;
-  width: 200px;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 24px;
-  font-weight: 700;
 }
 .button:last-child {
   margin-right: 0;
 }
 
 .container {
-  max-width: 1840px;
+  max-width: 1841px;
   margin: 0 auto;
 }
-@media (max-width: 1852px) {
+@media (max-width: 1853px) {
   .container {
     max-width: 970px;
   }
