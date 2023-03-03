@@ -1,0 +1,9 @@
+.control {
+    &__content {
+        padding-top: 100px;
+    }
+    &__row {
+        display: flex;
+        justify-content: center;
+    }
+}
