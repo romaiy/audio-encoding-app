@@ -1,0 +1,18 @@
+.status {
+    margin-left: 16px;
+    display: flex;
+    align-items: center;
+    background: #F8F8F8;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+    padding: 8px 16px;
+    &__circle {
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+}

@@ -1,23 +1,25 @@
 .control {
-    padding-top: 100px;
-    &__content {
-        background: white;
-        width: 911px;
-        height: 496px;
-        border-radius: 10px;
-        padding: 30px;
-    }
+    padding-top: 66px;
     &__heading {
         font-weight: 700;
         font-size: 24px;
         line-height: 29px;
         color: #000000;
-        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
     }
-    &__help {
-        font-size: 16px;
-        line-height: 19px;
-        color: #101010;
-        margin-bottom: 25px;
+    &__video {
+        margin-bottom: 24px;
     }
+    &__panel {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.block {
+    padding: 24px;
+    background: #F8F8F8;
+    border-radius: 20px;
 }

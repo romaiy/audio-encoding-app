@@ -9,7 +9,7 @@ function App() {
       <div className='App'>
         <div className='App__content container'>
         <Control/>
-        <Control/>
+        
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { useReactMediaRecorder } from "react-media-recorder";
 import React, { useEffect, useState } from "react";
+import Status from "./Status";
 
 const RecordView = () => {
     const [second, setSecond] = useState("00");
@@ -64,63 +65,49 @@ const RecordView = () => {
     return (
         <div className="control">
             <div className="control__content">
-                <h1 className="control__heading">{status}</h1>
-                <div className="control__block">
+                <h1 className="control__heading">Статус: <Status status={status}/></h1>
 
-                    <div className="control__video" style={(visible) ? {display: 'flex'} : {display: 'none'}}>
-                    <video src={mediaBlobUrl} controls />
+                <div className="block">
+
+                    <div className="control__video">
+                    <video   src={mediaBlobUrl} controls />
                     </div>
 
-                    <button onClick={stopTimer}>
-                        Clear
-                    </button>
+                    <div className="control__panel">
+                        <button
+                        className="button"
+                        onClick={() => {
+                        if (!isActive) {
+                            startRecording();
+                        } else {
+                            pauseRecording();
+                        }
+                        setIsActive(!isActive);
+                        }}
+                        >
+                        {isActive ? "Пауза" : "Начать записть"}
+                        </button>
+
+                        <button
+                        className="button"
+                        onClick={() => {
+                            stopRecording();
+                            pauseRecording();
+                            startVisible();
+                        }}
+                        >
+                            Стоп
+                        </button>
+
+                        <button className="button" onClick={stopTimer}>
+                        Очистить
+                        </button>
+                    </div>
 
                     <div className="control__time">
                     <span className="minute">{minute}</span>
                     <span>:</span>
                     <span className="second">{second}</span>
-                    </div>
-
-                    <div>
-                        <h3 className="control__help">
-                            Press the Start to record
-                        </h3>
-
-                        <label
-                        htmlFor="icon-button-file"
-                        >
-
-                        <div className="control__panel">
-
-                            <button
-                            className="button"
-                            onClick={() => {
-                            if (!isActive) {
-                                startRecording();
-                            } else {
-                                pauseRecording();
-                            }
-
-                            setIsActive(!isActive);
-                            }}
-                            >
-                            {isActive ? "Pause" : "Start"}
-                            </button>
-                            
-                            <button
-                            className="button"
-                            onClick={() => {
-                                stopRecording();
-                                pauseRecording();
-                                startVisible();
-                            }}
-                            >
-                            Stop
-                            </button>
-
-                        </div>
-
-                        </label>
                     </div>
 
                 </div>

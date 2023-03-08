@@ -107,7 +107,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  background: #F6F6F6;
+  background: white;
 }
 
 * {
@@ -135,34 +135,48 @@ body {
 }
 
 .control {
-  padding-top: 100px;
-}
-.control__content {
-  background: white;
-  width: 911px;
-  height: 496px;
-  border-radius: 10px;
-  padding: 30px;
+  padding-top: 66px;
 }
 .control__heading {
   font-weight: 700;
   font-size: 24px;
   line-height: 29px;
   color: #000000;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
 }
-.control__help {
-  font-size: 16px;
-  line-height: 19px;
-  color: #101010;
-  margin-bottom: 25px;
+.control__video {
+  margin-bottom: 24px;
+}
+.control__panel {
+  display: flex;
+  flex-direction: column;
 }
 
-.button {
-  margin-right: 20px;
+.block {
+  padding: 24px;
+  background: #F8F8F8;
+  border-radius: 20px;
 }
-.button:last-child {
-  margin-right: 0;
+
+.status {
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  background: #F8F8F8;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #333333;
+  padding: 8px 16px;
+}
+.status__circle {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
 }
 
 .container {
@@ -184,6 +198,18 @@ body {
     max-width: none;
     padding: 0 16px;
   }
+}
+
+.button {
+  width: 377px;
+  height: 51px;
+  color: white;
+  background: #BDBDBD;
+  border-radius: 15px;
+  margin-bottom: 8px;
+}
+.button:last-child {
+  margin-bottom: 0;
 }
 
 .wrapper {
